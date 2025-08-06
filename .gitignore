@@ -1,0 +1,11 @@
+# Environment file with sensitive data
+.env
+
+# Docker volumes and data
+media/
+certs/
+custom-templates/
+
+# Backup files
+*.sql
+*.tar.gz
