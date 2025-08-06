@@ -14,26 +14,35 @@ cd Authentik-Docker-Compose-Template
 ```bash
 # Copy the example file
 cp .env.example .env
-
-# Edit the .env file and replace the placeholders
-nano .env
 ```
 
 ### 3. Generate Secrets
 
-**Generate PostgreSQL Password:**
+**Option A: Automatic Generation (Recommended)**
 ```bash
-openssl rand -base64 36
+# Generate and append secrets to .env file
+echo "PG_PASS=$(openssl rand -base64 36 | tr -d '\n')" >> .env
+echo "AUTHENTIK_SECRET_KEY=$(openssl rand -base64 60 | tr -d '\n')" >> .env
 ```
 
-**Generate Authentik Secret Key:**
+**Option B: Manual Generation**
 ```bash
+# Generate PostgreSQL Password
+openssl rand -base64 36
+
+# Generate Authentik Secret Key
 openssl rand -base64 60
 ```
 
-Copy these values into your `.env` file and replace:
+Then manually copy these values into your `.env` file and replace:
 - `YOUR_PG_PASSWORD_HERE` with the PostgreSQL password
 - `YOUR_SECRET_KEY_HERE` with the Authentik secret key
+
+**Option C: Complete One-liner Setup**
+```bash
+# Copy .env and generate secrets in one go
+cp .env.example .env && echo "PG_PASS=$(openssl rand -base64 36 | tr -d '\n')" >> .env && echo "AUTHENTIK_SECRET_KEY=$(openssl rand -base64 60 | tr -d '\n')" >> .env
+```
 
 ### 4. Start Containers
 ```bash
