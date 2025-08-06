@@ -52,8 +52,7 @@ docker-compose up -d
 ### 5. Setup Authentik
 
 Open your browser and navigate to:
-- **HTTP:** `http://localhost:9000/if/flow/initial-setup/`
-- **HTTPS:** `https://localhost:9443/if/flow/initial-setup/`
+`http://localhost:9000/if/flow/initial-setup/`
 
 Follow the setup wizard to create an admin user.
 
